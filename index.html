@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="favicon.svg">
+<title>Renad Alhomrany · AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: gallery-clean and confident, a showcase where achievements are the exhibits.
+   IDEA: a digital-art marketplace: projects are "featured drops", awards are a ranked leaderboard.
+   PICTURE: two tilted project cards orbited by a ring, sparkles and a spinning badge.
+   COLOUR/TYPE: white and ink black, soft grey fields, one mint signal; Syne + Inter, Readex Pro for Arabic.
+   LAYOUT: hero, affiliations strip, skill pills, featured carousel, leaderboard, research, journey, contact. */
+:root{color-scheme:light;--bg:#fff;--soft:#f4f4f5;--ink:#0b0b0b;--mute:#6b6b73;--line:#e4e4e7;--mint:#16c79a;--gold:#e8a317}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,'Readex Pro',system-ui,sans-serif;overflow-x:clip}
+html[lang=ar] body{font-family:'Readex Pro',Inter,sans-serif}
+html[lang=ar] .en,html[lang=en] .ar{display:none}
+h1,h2,h3,.disp{font-family:Syne,'Readex Pro',sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+html[lang=ar] h1,html[lang=ar] h2,html[lang=ar] h3,html[lang=ar] .disp{font-family:'Readex Pro',sans-serif;line-height:1.3}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 max(5vw,18px)}
+button{font:inherit;color:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 24px;border-radius:10px;border:1.5px solid var(--ink);background:#fff;font-weight:600;cursor:pointer;transition:transform .2s}
+.btn.k{background:var(--ink);color:#fff}.btn:hover{transform:translateY(-2px)}
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:70px;gap:12px}
+.links{display:flex;gap:18px;font-size:14px;color:#3f3f46}
+.links a:hover{color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;font:700 17px Syne}
+html[lang=ar] .brand{font-family:'Readex Pro'}
+.brand svg{width:34px;height:34px}
+.tools{display:flex;justify-content:flex-end;align-items:center;gap:10px}
+.lang{min-height:40px;padding:0 14px;border-radius:99px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:600;font-size:14px}
+.round{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;border:0;cursor:pointer}
+.hero{background:linear-gradient(180deg,#fff 60%,var(--soft));padding:clamp(40px,6vw,80px) 0 clamp(48px,6vw,72px)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:6px 14px;border-radius:99px;border:1.5px solid var(--ink)}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.hero h1{font-size:clamp(38px,5.2vw,64px);margin:22px 0 18px;letter-spacing:-.02em}
+html[lang=ar] .hero h1{letter-spacing:0}
+.lead{color:var(--mute);font-size:17px;max-width:50ch;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.squig{width:70px;height:40px;margin-inline-start:6px}
+html[dir=rtl] .squig{transform:scaleX(-1)}
+.stats{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,44px);margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+.stats b{display:block;font:700 clamp(26px,3vw,34px) Syne}
+.stats span{font-size:13px;color:var(--mute)}
+.stage{position:relative;width:100%;max-width:560px;margin-inline:auto;aspect-ratio:1/.95}
+.orbit{position:absolute;inset:6% -4% 2% 2%;width:100%;height:100%;pointer-events:none}
+.orbit{overflow:visible}
+.tcard{position:absolute;width:58%;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:var(--ink);box-shadow:0 30px 60px rgba(0,0,0,.18);transition:transform .5s}
+.tcard img{display:block;width:100%;aspect-ratio:4/3.3;object-fit:cover}
+.tcard .cap{color:#fff;padding:12px 16px 14px;display:flex;justify-content:space-between;align-items:end;gap:10px}
+.tcard .cap b{font:600 15px Syne;display:block}
+html[lang=ar] .tcard .cap b{font-family:'Readex Pro'}
+.tcard .cap small{color:#a1a1aa;font-size:12px}
+.pill{background:#fff;color:var(--ink);border-radius:8px;font-size:12px;font-weight:600;padding:4px 10px;white-space:nowrap}
+.c1{inset-inline-end:2%;top:2%;transform:rotate(6deg)}
+.c2{inset-inline-start:6%;top:20%;transform:rotate(-5deg);z-index:2}
+.tcard{cursor:pointer;user-select:none}.tcard.front{z-index:3}.tcard:not(.front){z-index:1}.c1:hover{transform:rotate(9deg) translateY(-6px)}.c2:hover{transform:rotate(-8deg) translateY(-6px)}
+.fcard.hl{animation:hl 1.6s ease 2}@keyframes hl{50%{box-shadow:0 0 0 6px var(--mint)}}
+.spin{position:absolute;top:-2%;inset-inline-start:22%;width:118px;height:118px;z-index:5;pointer-events:none;background:#fff;border-radius:50%;border:2px solid var(--ink)}
+.spin svg.t{width:100%;height:100%;animation:rot 14s linear infinite}
+.spin .core{position:absolute;inset:30%;border-radius:50%;background:var(--ink);display:grid;place-items:center;color:#fff}
+@keyframes rot{to{transform:rotate(360deg)}}
+.star{position:absolute;width:30px;height:30px;z-index:3}
+.strip{position:relative;z-index:4;border-block:1px solid var(--line);background:#fff}
+.strip .wrap{display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;gap:18px 36px;padding-block:26px}
+.strip span{font:600 18px Syne;color:#a1a1aa;white-space:nowrap}
+html[lang=ar] .strip span{font-family:'Readex Pro'}
+.strip span:nth-child(2n){font-family:Georgia,serif;font-weight:700}
+html[lang=ar] .strip span:nth-child(2n){font-family:'Readex Pro'}
+section{padding:clamp(56px,7vw,96px) 0}
+.sh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px;margin-bottom:32px}
+.sh h2{font-size:clamp(28px,3.4vw,40px)}
+.sh p{color:var(--mute);margin:8px 0 0;max-width:56ch}
+.center{text-align:center}.center .sh{justify-content:center;text-align:center}
+.marq{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.row{display:flex;gap:12px;width:max-content;padding:6px 0;animation:slide 40s linear infinite}
+.row.r2{animation-direction:reverse}
+.marq:hover .row{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+html[dir=rtl] .row{animation-name:slider}@keyframes slider{to{transform:translateX(50%)}}
+.chip{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--ink);border-radius:99px;padding:8px 18px 8px 8px;font-weight:500;white-space:nowrap;background:#fff}
+html[dir=rtl] .chip{padding:8px 8px 8px 18px}
+.chip i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700;color:#fff}
+.carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 8px;scrollbar-width:none}
+.carousel::-webkit-scrollbar{display:none}
+.fcard{flex:0 0 clamp(260px,30vw,320px);scroll-snap-align:start;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:#fff;cursor:pointer;text-align:start;padding:0;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;transition:transform .25s,box-shadow .25s}
+.fcard .b{flex:1;display:flex;flex-direction:column}.fcard .res{margin-top:auto}
+.fcard:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.12)}
+.fcard img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-bottom:2px solid var(--ink)}
+.fcard .b{padding:14px 16px 16px}
+.fcard h3{font-size:19px;margin-bottom:4px}
+.who{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);margin-bottom:10px}
+.who em{width:20px;height:20px;border-radius:50%;background:var(--ink);display:inline-block}
+.res{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.res b{font:700 17px Syne}
+html[lang=ar] .res b{font-family:'Readex Pro'}
+.res small{display:block;color:var(--mute);font-size:12px}
+.res .t{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.cnav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:22px}
+.prog{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600}
+.prog span{width:120px;height:2px;background:var(--line);position:relative}
+.prog span i{position:absolute;inset-block:0;inset-inline-start:0;background:var(--ink);transition:width .3s}
+.round.o{background:#fff;color:var(--ink)!important;border:1.5px solid var(--ink)}
+html[dir=rtl] .cnav .round svg{transform:scaleX(-1)}
+.tabs{display:inline-flex;gap:4px;padding:4px;border:1.5px solid var(--line);border-radius:10px;flex-wrap:wrap}
+.tabs button{border:0;background:none;padding:0 14px;min-height:36px;border-radius:7px;cursor:pointer;font-size:14px;font-weight:500;color:var(--mute)}
+.tabs button[aria-pressed=true]{background:var(--ink);color:#fff}
+.board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ach{display:grid;grid-template-columns:28px 48px minmax(0,1fr) auto;gap:14px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;transition:border-color .2s}
+.ach:hover{border-color:var(--ink)}
+.ach .n{font:700 15px Syne;color:var(--mute)}
+.ach .ic{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:20px}
+.ach h3{font:600 15px Inter;line-height:1.35}
+html[lang=ar] .ach h3{font-family:'Readex Pro'}
+.ach p{margin:2px 0 0;font-size:13px;color:var(--mute)}
+.ach .v{text-align:end}
+.ach .v b{font:700 16px Syne;white-space:nowrap;display:block}
+html[lang=ar] .ach .v b{font-family:'Readex Pro'}
+.ach .v small{font-size:12px;color:var(--mint);font-weight:600;white-space:nowrap}
+.soft{background:var(--soft)}
+.research{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:center}
+.box{border:2px solid var(--ink);border-radius:18px;background:#fff;padding:24px}
+.bars{display:grid;gap:18px;margin-top:6px}
+.bl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;gap:10px}
+.bl b{font-family:Syne}
+.track{position:relative;height:14px;border-radius:99px;background:var(--soft);border:1.5px solid var(--ink);overflow:hidden}
+.fill{height:100%;width:0;background:var(--ink);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.fill.m{background:var(--mint)}
+.chance{position:absolute;inset-block:0;inset-inline-start:50%;border-inline-start:2px dashed var(--gold)}
+.note{font-size:13px;color:var(--mute);margin:14px 0 0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tags span{color:var(--ink);font-size:12.5px;border:1.5px solid var(--line);border-radius:8px;padding:3px 10px;background:#fff}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.filters button{min-height:42px;padding:0 20px;border:1.5px solid var(--ink);border-radius:8px;background:#fff;cursor:pointer;font-weight:500}
+.filters button[aria-pressed=true]{background:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.mini{border:1.5px solid var(--line);border-radius:16px;padding:20px;background:#fff}
+.mini h3{font-size:19px;margin:10px 0 6px}
+.mini p{color:var(--mute);font-size:14.5px;margin:0}
+.lbl{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--soft)}
+.lbl.g{background:#fff4d6;color:#8a5a00}.lbl.s{background:#ecebff;color:#4b3fb5}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.tl{display:grid;gap:12px}
+.tl .mini .yr{font-size:13px;font-weight:600;color:var(--mint)}
+.cta{background:var(--ink);color:#fff;border-radius:24px;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:center;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(30px,4vw,48px)}
+.cta p{color:#a1a1aa}
+.cta .btn{border-color:#fff}.cta .btn.k{background:#fff;color:var(--ink)}.cta .btn:not(.k){background:transparent;color:#fff}.cta .btns{gap:10px}
+.cta .mail{font:600 clamp(16px,2vw,20px) Syne;word-break:break-all}
+footer{padding:28px 0;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center}
+dialog{background:#0b0b0b;color:#fff;border:2px solid #0b0b0b;border-radius:20px;padding:68px 0 0;max-width:min(860px,94vw);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog img{display:block;width:100%;border-block:1px solid #2a2a2e}
+dialog .b{padding:22px 24px 26px}
+dialog h3{font-size:26px;margin:10px 0 4px}
+dialog ul{padding-inline-start:20px;color:#d4d4d8}
+dialog .who{color:#a1a1aa}dialog .tags span{background:#1c1c20;border-color:#3f3f46;color:#fff}
+dialog .x{background:#fff!important;color:#0b0b0b!important;border-color:#fff!important}
+dialog .x{z-index:2;font-size:16px;position:absolute;top:12px;inset-inline-end:12px}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+:focus-visible{outline:2.5px solid var(--mint);outline-offset:3px}
+@media(max-width:420px){.cvn span{display:none!important}}
+@media(max-width:900px){.links{display:none}nav .wrap{grid-template-columns:1fr auto}.hgrid,.research,.two,.cta,.board{grid-template-columns:minmax(0,1fr)}.stage{margin-top:20px}}
+@media(max-width:520px){.ach{grid-template-columns:22px 40px minmax(0,1fr);}.ach .v{grid-column:3;text-align:start}.ach .ic{width:40px;height:40px}.spin{width:92px;height:92px}.tcard{width:62%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46.5" fill="none" stroke="currentColor" stroke-width="3"/><path transform="translate(13.72 59.60)" d="M2.1 0.0V-19.2H25.29Q28.02 -19.2 30.195 -18.585Q32.37 -17.97 33.644999999999996 -16.53Q34.92 -15.09 34.92 -12.6Q34.92 -10.95 34.32 -9.87Q33.72 -8.79 32.67 -8.19Q31.619999999999997 -7.59 30.269999999999996 -7.32Q28.919999999999998 -7.05 27.45 -6.989999999999999L25.259999999999998 -7.41Q28.83 -7.38 30.764999999999997 -7.109999999999999Q32.699999999999996 -6.84 33.464999999999996 -6.135Q34.23 -5.43 34.23 -4.109999999999999V0.0H26.73V-3.21Q26.73 -4.109999999999999 26.384999999999998 -4.574999999999999Q26.04 -5.04 24.884999999999998 -5.22Q23.73 -5.3999999999999995 21.33 -5.3999999999999995H9.6V0.0ZM9.6 -10.41H25.29Q26.189999999999998 -10.41 26.805 -10.71Q27.419999999999998 -11.01 27.419999999999998 -11.85Q27.419999999999998 -12.629999999999999 26.805 -12.915Q26.189999999999998 -13.2 25.29 -13.2H9.6ZM42.980000000000004 -2.9099999999999997V-7.41H63.5V-2.9099999999999997ZM36.26 0.0 49.13 -19.2H57.47L70.46000000000001 0.0H62.21L51.08 -17.189999999999998H55.55L44.51 0.0Z" fill="currentColor"/><path d="M78 16q1.2 5.8 7 7q-5.8 1.2-7 7q-1.2-5.8-7-7q5.8-1.2 7-7z" fill="currentColor"/></symbol>
+  <symbol id="spark" viewBox="0 0 40 40"><path d="M20 0q3 17 20 20q-17 3-20 20q-3-17-20-20q17-3 20-20z"/></symbol>
+</svg>
+
+<nav><div class="wrap">
+  <div class="links"><a href="#awards"><span class="en">Awards</span><span class="ar">الجوائز</span></a><a href="#board"><span class="en">Achievements</span><span class="ar">الإنجازات</span></a><a href="#research"><span class="en">Research</span><span class="ar">البحث</span></a><a href="#journey"><span class="en">Journey</span><span class="ar">المسيرة</span></a></div>
+  <a class="brand" href="#top"><svg><use href="#logo"/></svg><span class="en">Renad Alhomrany</span><span class="ar">ريناد الحمراني</span></a>
+  <div class="tools"><a class="lang cvn" href="Renad_Alhomrany_CV.pdf" target="_blank" rel="noopener" download style="display:inline-flex;align-items:center;gap:6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg><span class="en">CV</span><span class="ar">السيرة</span></a><button class="lang" id="lang" type="button" aria-label="Switch language">العربية</button><a class="round" href="#contact" aria-label="Contact"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></a></div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap hgrid">
+  <div>
+    <span class="kicker"><i></i><span class="en">Master of IT (AI) · University of Melbourne</span><span class="ar">ماجستير تقنية المعلومات (ذكاء اصطناعي) · جامعة ملبورن</span></span>
+    <h1><span class="en">Building AI that wins and solves real problems</span><span class="ar">أبني حلول ذكاء اصطناعي تفوز وتحل مشاكل حقيقية</span></h1>
+    <p class="lead"><span class="en">Machine learning and business intelligence specialist. 10+ hackathons building AI prototypes with teams of 4–6, from satellite irrigation monitoring to voice guidance for visually impaired pilgrims.</span><span class="ar">متخصصة في تعلّم الآلة وذكاء الأعمال. شاركت في أكثر من 10 هاكاثونات أبني فيها نماذج أولية بالذكاء الاصطناعي ضمن فرق من 4 إلى 6 أشخاص، من مراقبة الري بالأقمار الصناعية إلى الإرشاد الصوتي للحجاج المكفوفين.</span></p>
+    <div class="btns"><a class="btn k" href="#awards"><span class="en">See achievements</span><span class="ar">شاهد الإنجازات</span></a><a class="btn " href="Renad_Alhomrany_CV.pdf" target="_blank" rel="noopener" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg><span class="en">Download CV</span><span class="ar">تحميل السيرة الذاتية</span></a>
+      <svg class="squig" viewBox="0 0 70 40" fill="none" stroke="#0b0b0b" stroke-width="1.6" stroke-linecap="round"><path d="M2 34c8-2 8-14 16-14s6 12 14 10 6-16 14-18 10 4 20-8"/><path d="M58 4h8v8"/></svg></div>
+    <div class="stats">
+      <div><b data-n="2">0</b><span class="en">1st place wins</span><span class="ar">مركز أول</span></div>
+      <div><b data-n="2">0</b><span class="en">3rd place finishes</span><span class="ar">مركز ثالث</span></div>
+      <div><b data-n="10" data-s="+">0</b><span class="en">Hackathons</span><span class="ar">هاكاثون</span></div>
+      <div><b>Top 3</b><span class="en">of 600 ideas</span><span class="ar">من 600 فكرة</span></div>
+    </div>
+  </div>
+  <div class="stage">
+    <svg class="orbit" viewBox="0 0 500 460" fill="none" stroke="#0b0b0b" stroke-width="1.3"><g transform="rotate(-18 250 250)"><path id="orbp" d="M10 250a240 120 0 1 0 480 0a240 120 0 1 0-480 0"/><path d="M70 250a180 86 0 1 0 360 0a180 86 0 1 0-360 0" stroke-dasharray="3 7" opacity=".45"/><path id="orbq" d="M70 250a180 86 0 1 0 360 0a180 86 0 1 0-360 0" stroke="none"/>
+<circle cx="10" cy="250" r="5" fill="#0b0b0b" stroke="none"/></g></svg>
+    <div class="spin"><svg class="t" viewBox="0 0 120 120"><defs><path id="cp" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><text font-size="10.5" font-weight="700" font-family="Syne,sans-serif" direction="ltr" style="direction:ltr;unicode-bidi:bidi-override"><textPath href="#cp" textLength="272" lengthAdjust="spacing">AI · MACHINE LEARNING · DATA · </textPath></text></svg><div class="core"><svg width="22" height="22"><use href="#spark" fill="#fff"/></svg></div></div>
+    <div class="tcard c1" data-i="3" title="Click to bring forward · double-click to open"><img src="img/khalil.jpg" alt=""><div class="cap"><div><b>Khalil · خليل</b><small>AR · Speech · LLM</small></div><span class="pill">2024</span></div></div>
+    <div class="tcard c2 front" data-i="0" title="Click to bring forward · double-click to open"><img src="img/misbar.jpg" alt=""><div class="cap"><div><b><span class="en">Misbar · 1st Place</span><span class="ar">مِسبار · المركز الأول</span></b><small>NDVI · Earth Engine · OpenAI</small></div><span class="pill">🏆 2025</span></div></div>
+    <svg class="star" style="top:56%;inset-inline-start:0"><use href="#spark" fill="#0b0b0b"/></svg>
+    <svg class="star" style="bottom:4%;inset-inline-end:14%;width:38px;height:38px"><use href="#spark" fill="#0b0b0b"/></svg>
+    <svg class="star" style="top:10%;inset-inline-end:0;width:22px;height:22px"><use href="#spark" fill="#0b0b0b"/></svg>
+  </div>
+</div></header>
+
+<div class="strip"><div class="wrap" id="strip"></div></div>
+
+<section class="center"><div class="wrap">
+  <div class="sh"><div><h2><span class="en">Skills toolkit</span><span class="ar">المهارات والأدوات</span></h2></div></div>
+</div>
+  <div class="marq"><div class="row" id="r1"></div></div>
+  <div class="marq"><div class="row r2" id="r2"></div></div>
+</section>
+
+<section id="awards" style="padding-top:20px"><div class="wrap">
+  <div class="sh"><div><h2><span class="en">Featured wins & builds</span><span class="ar">مشاريع وجوائز مميزة</span></h2><p><span class="en">Tap any project for details, role and tech stack.</span><span class="ar">اضغط على أي مشروع لتشوف التفاصيل والدور والتقنيات.</span></p></div></div>
+  <div class="carousel" id="car"></div>
+  <div class="cnav"><button class="round o" id="prev" type="button" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 6-6 6 6 6"/></svg></button><div class="prog"><b id="pc">01</b><span><i id="pb"></i></span><b id="pt">05</b></div><button class="round" id="next" type="button" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button></div>
+</div></section>
+
+<section id="board"><div class="wrap">
+  <div class="sh"><div><h2><span class="en">Achievement board</span><span class="ar">لوحة الإنجازات</span></h2></div>
+    <div class="tabs" id="tabs"><button aria-pressed="true" data-k="all"><span class="en">All</span><span class="ar">الكل</span></button><button aria-pressed="false" data-k="award"><span class="en">Awards</span><span class="ar">جوائز</span></button><button aria-pressed="false" data-k="acad"><span class="en">Academic</span><span class="ar">أكاديمي</span></button><button aria-pressed="false" data-k="lead"><span class="en">Leadership</span><span class="ar">قيادة</span></button></div></div>
+  <div class="board" id="ach"></div>
+</div></section>
+
+<section id="research" class="soft"><div class="wrap research">
+  <div>
+    <span class="lbl s"><span class="en">Research · 2026 · Team of 4</span><span class="ar">بحث · 2026 · فريق من 4</span></span>
+    <h2 style="font-size:clamp(26px,3.2vw,38px);margin:14px 0"><span class="en">Does a model trained on calm markets survive a crisis?</span><span class="ar">هل يصمد نموذج مدرّب على سوق هادئ وقت الأزمة؟</span></h2>
+    <p class="en" style="color:#3f3f46">My part (RQ3): five classifiers, including a neural network, predicting 5-day price direction in three setups: stable (2017–2019), COVID (2020–2021), and trained on stable then tested on COVID. Every model degraded. Two predicted "up" over 90% of the time, hidden by accuracy, so I evaluated with balanced accuracy and macro F1.</p>
+    <p class="ar" style="color:#3f3f46">دوري (RQ3): خمسة مصنِّفات منها شبكة عصبية تتنبأ باتجاه السعر خلال 5 أيام في ثلاث حالات: سوق مستقر (2017–2019)، وفترة كورونا (2020–2021)، وتدريب على المستقر واختبار على كورونا. كل النماذج تراجعت، واثنان منها توقعا "صعود" بأكثر من 90% من المرات وهذا ما تكشفه الدقة العادية، فاستخدمت الدقة المتوازنة و Macro F1.</p>
+    <div class="tags"><span>Python</span><span>scikit-learn</span><span>pandas</span><span>GridSearchCV</span><span>TimeSeriesSplit</span></div>
+  </div>
+  <div class="box rv">
+    <div class="bl" style="margin-bottom:16px"><b class="disp" style="font-size:17px"><span class="en">Best model · balanced accuracy</span><span class="ar">أفضل نموذج · الدقة المتوازنة</span></b></div>
+    <div class="bars">
+      <div><div class="bl"><span class="en">Stable market</span><span class="ar">سوق مستقر</span><b>0.549</b></div><div class="track"><div class="fill m" data-w="54.9"></div><span class="chance"></span></div></div>
+      <div><div class="bl"><span class="en">Trained stable → tested on COVID</span><span class="ar">تدريب مستقر ← اختبار كورونا</span><b>0.517</b></div><div class="track"><div class="fill" data-w="51.7"></div><span class="chance"></span></div></div>
+    </div>
+    <p class="note"><span class="en">Dashed line = chance (0.50). The finding is about degradation and bias, not a trading edge.</span><span class="ar">الخط المتقطع = الصدفة (0.50). النتيجة عن تراجع النماذج وانحيازها، وليست ميزة للتداول.</span></p>
+  </div>
+</div></section>
+
+<section id="more"><div class="wrap">
+  <div class="sh"><div><h2><span class="en">More projects</span><span class="ar">مشاريع أخرى</span></h2></div></div>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="journey" class="soft"><div class="wrap two">
+  <div><div class="sh"><h2><span class="en">Education</span><span class="ar">التعليم</span></h2></div><div class="tl" id="edu"></div></div>
+  <div><div class="sh"><h2><span class="en">Leadership & volunteering</span><span class="ar">القيادة والتطوع</span></h2></div><div class="tl" id="lead"></div></div>
+</div></section>
+
+<section id="contact"><div class="wrap"><div class="cta">
+  <div><h2><span class="en">Let's build something intelligent.</span><span class="ar">خلّنا نبني شي ذكي مع بعض.</span></h2>
+  <p><span class="en">Open to internships, research and AI product roles in Melbourne and remote.</span><span class="ar">متاحة للتدريب والبحث وأدوار منتجات الذكاء الاصطناعي في ملبورن أو عن بُعد.</span></p></div>
+  <div><p class="mail">rekhalid68@gmail.com</p><div class="btns"><a class="btn k" href="Renad_Alhomrany_CV.pdf" target="_blank" rel="noopener" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg><span class="en">Download CV</span><span class="ar">تحميل السيرة الذاتية</span></a><button class="btn" id="copy" type="button"><span class="en">Copy email</span><span class="ar">نسخ الإيميل</span></button><a class="btn" href="https://linkedin.com/in/renad-alhomrany-">LinkedIn ↗</a></div></div>
+</div></div></section>
+
+<footer><div class="wrap"><span class="brand" style="font-size:15px"><svg style="width:26px;height:26px"><use href="#logo"/></svg><span class="en">Renad Alhomrany</span><span class="ar">ريناد الحمراني</span></span><span><span class="en">© 2026 Renad Alhomrany · All rights reserved</span><span class="ar">© 2026 جميع الحقوق محفوظة لـ ريناد الحمراني</span></span></div></footer>
+
+<dialog id="dlg"><button class="round o x" type="button" id="dx" aria-label="Close">✕</button><div id="dc"></div></dialog>
+
+<script>
+{
+const T=(en,ar)=>`<span class="en">${en}</span><span class="ar">${ar}</span>`;
+const tags=a=>'<div class="tags">'+a.map(s=>`<span>${s}</span>`).join('')+'</div>';
+document.getElementById('strip').innerHTML=[['University of Melbourne','جامعة ملبورن'],['SDAIA','سدايا'],['University of Al Baha','جامعة الباحة'],['Al-Baha Chamber','غرفة الباحة'],['GDSC','GDSC'],['Diaa Association','جمعية ضياء']].map(x=>`<span>${T(...x)}</span>`).join('');
+const S=[['ML','Classification','التصنيف','#0b0b0b'],['CV','Computer vision (CNN)','رؤية حاسوبية (CNN)','#16c79a'],['NLP','NLP','معالجة اللغة','#6a5cff'],['SR','Speech recognition','التعرف على الكلام','#e8a317'],['BI','Business intelligence','ذكاء الأعمال','#0b0b0b'],['F1','Balanced accuracy & macro F1','الدقة المتوازنة و Macro F1','#ef4b6c'],['CV','Cross-validation','التحقق المتقاطع','#16c79a'],['Py','scikit-learn · pandas','scikit-learn · pandas','#3b82f6'],
+ ['AI','OpenAI API','OpenAI API','#0b0b0b'],['GE','Google Earth Engine','Google Earth Engine','#16c79a'],['Fl','Flask','Flask','#6a5cff'],['Re','React','React','#3b82f6'],['Fb','Firebase','Firebase','#e8a317'],['Fl','Flutter','Flutter','#3b82f6'],['U','Unity','Unity','#0b0b0b'],['$','Market sizing','تقدير حجم السوق','#ef4b6c'],['Q','Stakeholder interviews','مقابلات المستفيدين','#6a5cff'],['🎤','Pitching','العرض والإقناع','#e8a317']];
+const chip=s=>`<span class="chip"><i style="background:${s[3]}">${s[0]}</i>${T(s[1],s[2])}</span>`;
+const h=Math.ceil(S.length/2),a1=S.slice(0,h).map(chip).join(''),a2=S.slice(h).map(chip).join('');
+document.getElementById('r1').innerHTML=a1+a1;document.getElementById('r2').innerHTML=a2+a2;
+const P=[
+ {img:'misbar',t:['Misbar','مِسبار'],team:['Team Misbar · 5','فريق مسبار · 5'],r:['1st Place','المركز الأول'],ev:['Agricultural Innovation Hackathon 2025','هاكاثون الابتكار الزراعي 2025'],role:['Business Intelligence Specialist','أخصائية ذكاء الأعمال'],
+  p:[['AI platform using satellite imagery (NDVI) to monitor farm irrigation, rank farms by water use and flag violations to regulators.','منصة ذكاء اصطناعي تستخدم صور الأقمار الصناعية (NDVI) لمراقبة ري المزارع وترتيبها حسب استهلاك المياه وإبلاغ الجهات الرقابية بالمخالفات.'],['Built the business model and market sizing: SAR 125M total, SAR 30M serviceable, SAR 5M in the first two years.','بنيت نموذج العمل وقدّرت حجم السوق: 125 مليون ريال إجمالي، و30 مليون قابلة للخدمة، و5 ملايين في أول سنتين.']],st:['Python/Flask','React','Firebase','Google Earth Engine','OpenAI API']},
+ {img:'basir',t:['Basir','بصير'],team:['Team Kun Ma\'i','فريق كن معي'],r:['Top 3 of 600','ضمن أفضل 3 من 600'],ev:['Waqf Challenge 2024 · 3rd Place','تحدي الوقف 2024 · المركز الثالث'],role:['Team member','عضو فريق'],
+  p:[['Mobile app with AI voice guidance for visually impaired pilgrims, including a Tawaf and Sa\'i round counter.','تطبيق جوال بإرشاد صوتي ذكي للحجاج والمعتمرين المكفوفين، مع عدّاد لأشواط الطواف والسعي.'],['Validated the problem by interviewing visually impaired users with the Diaa Association.','تحققنا من المشكلة بمقابلات مع مستخدمين مكفوفين بالتعاون مع جمعية ضياء.']],st:['Voice AI','Accessibility','Mobile','User research']},
+ {img:'maak',t:['Ma\'ak','معاك'],team:['Team AI Titans','فريق AI Titans'],r:['3rd of 52 teams','الثالث من 52 فريق'],ev:['SDAIA AI Hackathon, Al Baha 2024','هاكاثون سدايا للذكاء الاصطناعي، الباحة 2024'],role:['Team member','عضو فريق'],
+  p:[['AI navigation app for visually impaired people: hazard alerts on the route, nearby places and one-tap emergency call.','تطبيق تنقّل ذكي للمكفوفين: تنبيهات بالعوائق في الطريق، ودليل للأماكن القريبة، واتصال طوارئ بضغطة.'],['CNN road-sign recognition, GPS and beacons, LLM recommendations and text-to-speech. 200+ participants.','تعرّف على إشارات الطريق بـ CNN، و GPS ومنارات، وتوصيات بنماذج لغوية، وتحويل النص لكلام. أكثر من 200 مشارك.']],st:['CNN','GPS + Beacons','LLM','TTS']},
+ {img:'khalil',t:['Khalil','خليل'],team:['Hackathon team','فريق هاكاثون'],r:['AR + AI','واقع معزز + ذكاء'],ev:['Hackathon project 2024','مشروع هاكاثون 2024'],role:['Team member','عضو فريق'],
+  p:[['AR app for Quran exam practice with speech recognition and LLMs.','تطبيق واقع معزز للتدرّب على اختبارات القرآن الكريم باستخدام التعرف على الكلام والنماذج اللغوية.'],['CNN anti-cheating model during recitation tests.','نموذج CNN لمنع الغش أثناء اختبار التسميع.']],st:['Unity','AR','Speech recognition','LLM','CNN']},
+ {img:'superm',t:['Super-M','سوبر-إم'],team:['Team of 5','فريق من 5'],r:['98% demand','98% طلب'],ev:['Final Year Project · Al Baha 2024','مشروع التخرج · جامعة الباحة 2024'],role:['Supervised by Dr Mohammed Alliheedi','بإشراف د. محمد Alliheedi'],
+  p:[['Mobile self-checkout: barcode scanning, virtual cart, QR e-receipts and shared shopping lists.','دفع ذاتي من الجوال: مسح الباركود، سلة افتراضية، إيصالات QR، وقوائم تسوق مشتركة.'],['Five user roles with weekly reports; tested on a real Android device. 98% of surveyed shoppers wanted faster checkout.','خمسة أدوار مستخدمين مع تقارير أسبوعية، وجُرّب على جهاز أندرويد حقيقي. 98% من المتسوقين في الاستبيان أرادوا دفعًا أسرع.']],st:['Android','Barcode / QR','Roles','Reports']}
+];
+const car=document.getElementById('car');
+car.innerHTML=P.map((p,i)=>`<button class="fcard" type="button" data-i="${i}"><img src="img/${p.img}.jpg" alt="${p.t[0]}" loading="lazy"><div class="b"><h3>${T(...p.t)}</h3><div class="who"><em></em>${T(...p.team)}</div><div class="res"><div><b>${T(...p.r)}</b><small>${T(...p.ev)}</small></div><span class="t">↗</span></div></div></button>`).join('');
+const dlg=document.getElementById('dlg'),dc=document.getElementById('dc');
+car.addEventListener('click',e=>{const c=e.target.closest('.fcard');if(!c)return;const p=P[+c.dataset.i];
+ dc.innerHTML=`<img src="img/${p.img}.jpg" alt=""><div class="b"><span class="lbl g">${T(...p.ev)}</span><h3>${T(...p.t)}</h3><div class="who">${T(...p.team)} · ${T(...p.role)}</div><ul>${p.p.map(x=>`<li>${T(...x)}</li>`).join('')}</ul>${tags(p.st)}</div>`;
+ try{dlg.showModal()}catch(_){dlg.setAttribute('open','')}});
+document.getElementById('dx').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+const pc=document.getElementById('pc'),pb=document.getElementById('pb');
+const cur=()=>{const w=car.firstElementChild.offsetWidth+18;return Math.round(Math.abs(car.scrollLeft)/w)};
+const upd=()=>{const i=Math.min(cur(),P.length-1);pc.textContent=String(i+1).padStart(2,'0');pb.style.width=((i+1)/P.length*100)+'%'};
+car.addEventListener('scroll',upd,{passive:true});upd();
+const go=d=>{const i=Math.max(0,Math.min(P.length-1,cur()+d));car.children[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'})};
+document.getElementById('prev').addEventListener('click',()=>go(-1));document.getElementById('next').addEventListener('click',()=>go(1));
+car.addEventListener('keydown',e=>{const rtl=document.documentElement.dir==='rtl';if(e.key==='ArrowRight')go(rtl?-1:1);if(e.key==='ArrowLeft')go(rtl?1:-1)});
+const A=[
+ {k:'award',ic:'🏆',bg:'#fff4d6',t:['1st Place · Agricultural Innovation Hackathon','المركز الأول · هاكاثون الابتكار الزراعي'],s:['Misbar · 2025 · BI Specialist','مِسبار · 2025 · أخصائية ذكاء أعمال'],v:['SAR 125M','125 مليون ريال'],d:['market sized','حجم السوق']},
+ {k:'award',ic:'🏆',bg:'#fff4d6',t:['1st Place · Intilaqa Hackathon','المركز الأول · هاكاثون انطلاقة'],s:['Murshid · Sep 2022','مرشد · سبتمبر 2022'],v:['1st','الأول'],d:['AI student guide','مرشد طلابي ذكي']},
+ {k:'award',ic:'🥉',bg:'#ecebff',t:['3rd Place · Waqf Challenge (national)','المركز الثالث · تحدي الوقف (وطني)'],s:['Kun Ma\'i · Aug 2024','كن معي · أغسطس 2024'],v:['Top 3','أفضل 3'],d:['of 600 ideas','من 600 فكرة']},
+ {k:'award',ic:'🥉',bg:'#ecebff',t:['3rd Place · SDAIA AI Hackathon','المركز الثالث · هاكاثون سدايا للذكاء الاصطناعي'],s:['AI Titans · Al Baha · Jan 2024','AI Titans · الباحة · يناير 2024'],v:['3 / 52','3 / 52'],d:['teams','فريق']},
+ {k:'acad',ic:'🎓',bg:'#dff7ef',t:['SDAIA Scholarship · Master of IT (AI)','ابتعاث سدايا · ماجستير تقنية المعلومات (AI)'],s:['University of Melbourne · 2025–','جامعة ملبورن · 2025–'],v:['AI','ذكاء اصطناعي'],d:['specialisation','تخصص']},
+ {k:'award',ic:'⚡',bg:'#f4f4f5',t:['10+ hackathons competed','أكثر من 10 هاكاثونات'],s:['AI prototypes · teams of 4–6','نماذج ذكاء اصطناعي · فرق 4–6'],v:['10+','+10'],d:['pitches delivered','عروض مقدَّمة']},
+ {k:'acad',ic:'🛒',bg:'#e6f0ff',t:['Super-M · Final Year Project','سوبر-إم · مشروع التخرج'],s:['University of Al Baha · 2024','جامعة الباحة · 2024'],v:['98%','98%'],d:['wanted faster checkout','أرادوا دفعًا أسرع']},
+ {k:'acad',ic:'📘',bg:'#dff7ef',t:['B.CIS · Second Class Honours','بكالوريوس نظم المعلومات · مرتبة الشرف الثانية'],s:['University of Al Baha · 2024','جامعة الباحة · 2024'],v:['Honours','شرف'],d:['graduated','تخرّج']},
+ {k:'lead',ic:'♟',bg:'#f4f4f5',t:['Table tennis & chess teams','منتخب تنس الطاولة والشطرنج'],s:['Honoured by the Emir of Al Baha','تكريم من أمير منطقة الباحة'],v:['6th','السادس'],d:['nationally · 2023 & 2024','على المملكة · 2023 و2024']},
+ {k:'lead',ic:'🤝',bg:'#fff4d6',t:['Board member · Student Fund','عضو مجلس · صندوق الطالب'],s:['University of Al Baha · GDSC member','جامعة الباحة · عضو GDSC'],v:['2022','2022'],d:['leadership','قيادة']}
+];
+const ach=document.getElementById('ach');
+const drawA=k=>{ach.innerHTML=A.filter(a=>k==='all'||a.k===k).map((a,i)=>`<div class="ach"><span class="n">${i+1}</span><span class="ic" style="background:${a.bg}">${a.ic}</span><div><h3>${T(...a.t)}</h3><p>${T(...a.s)}</p></div><div class="v"><b>${T(...a.v)}</b><small>${T(...a.d)}</small></div></div>`).join('')};
+drawA('all');
+document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));drawA(b.dataset.k)});
+const G=[
+ {c:'ai',l:['🏆 1st · Intilaqa 2022','🏆 الأول · انطلاقة 2022'],cls:'g',t:['Murshid','مرشد'],p:['AI app giving students academic, social and psychological guidance: FAQ chatbot, campus navigation, grade alerts for advisors.','تطبيق ذكي يقدّم للطلاب إرشادًا أكاديميًا واجتماعيًا ونفسيًا: شات بوت للأسئلة، وتنقّل داخل الحرم، وتنبيهات الدرجات للمرشدين.'],st:['Chatbot','NLP']},
+ {c:'mobile',l:['2025','2025'],cls:'',t:['Shiab','شِعاب'],p:['AR and GPS wayfinding app for Hajj pilgrims with family tracking.','تطبيق إرشاد بالواقع المعزز و GPS لحجاج بيت الله مع تتبّع أفراد العائلة.'],st:['Flutter','BLE beacons','AR']},
+ {c:'ai',l:['2025','2025'],cls:'',t:['Herfati','حِرفتي'],p:['Platform for Saudi artisans with an LLM marketing and finance assistant.','منصة للحرفيين السعوديين مع مساعد بالنماذج اللغوية للتسويق والمالية.'],st:['React','Firestore','LLM']},
+ {c:'data',l:['Research 2026','بحث 2026'],cls:'s',t:['Market stress test','اختبار السوق تحت الضغط'],p:['Five classifiers tested on stable vs COVID markets; balanced accuracy exposed hidden bias.','خمسة مصنِّفات بين سوق مستقر وفترة كورونا، والدقة المتوازنة كشفت انحيازًا مخفيًا.'],st:['scikit-learn','pandas']},
+ {c:'mobile',l:['🥉 Waqf 2024','🥉 الوقف 2024'],cls:'s',t:['Basir','بصير'],p:['Voice-guided companion for visually impaired pilgrims with a Tawaf and Sa\'i counter.','مرافق بإرشاد صوتي للحجاج المكفوفين مع عدّاد الطواف والسعي.'],st:['Voice AI','Accessibility']},
+ {c:'data',l:['🏆 1st · 2025','🏆 الأول · 2025'],cls:'g',t:['Misbar','مِسبار'],p:['Satellite NDVI irrigation monitoring with a SAR 125M market model.','مراقبة الري بمؤشر NDVI من الأقمار الصناعية مع نموذج سوق بقيمة 125 مليون ريال.'],st:['Earth Engine','BI']}
+];
+const F=[['all','All','الكل'],['ai','AI & LLM','ذكاء ونماذج لغوية'],['data','Data & ML','بيانات وتعلّم آلة'],['mobile','Mobile & AR','جوال وواقع معزز']];
+const fl=document.getElementById('filters'),gr=document.getElementById('grid');
+fl.innerHTML=F.map((f,i)=>`<button type="button" data-c="${f[0]}" aria-pressed="${i===0}">${T(f[1],f[2])}</button>`).join('');
+const drawG=c=>{gr.innerHTML=G.filter(g=>c==='all'||g.c===c).map(g=>`<div class="mini"><span class="lbl ${g.cls}">${T(...g.l)}</span><h3>${T(...g.t)}</h3><p>${T(...g.p)}</p>${tags(g.st)}</div>`).join('')};
+drawG('all');
+fl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;fl.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));drawG(b.dataset.c)});
+const card=(y,t,p)=>`<div class="mini"><span class="yr">${T(...y)}</span><h3>${T(...t)}</h3><p>${T(...p)}</p></div>`;
+document.getElementById('edu').innerHTML=card(['2025 – present','2025 – الآن'],['Master of Information Technology (AI)','ماجستير تقنية المعلومات (ذكاء اصطناعي)'],['University of Melbourne, Australia · SDAIA scholarship','جامعة ملبورن، أستراليا · ابتعاث سدايا'])+card(['Graduated 2024','تخرّج 2024'],['Bachelor of Computer Information Systems','بكالوريوس نظم المعلومات الحاسوبية'],['University of Al Baha · Second Class Honours','جامعة الباحة · مرتبة الشرف الثانية']);
+document.getElementById('lead').innerHTML=card(['Jul – Oct 2026','يوليو – أكتوبر 2026'],['Volunteer Teacher, Quran & Arabic','معلمة متطوعة، قرآن ولغة عربية'],['Al-Asalah Academy, Melbourne Saudi Club · 13 weeks','أكاديمية الأصالة، النادي السعودي في ملبورن · 13 أسبوع'])+card(['2022','2022'],['Board member, Student Fund','عضو مجلس صندوق الطالب'],['University of Al Baha · member, GDSC Al Baha','جامعة الباحة · عضو GDSC الباحة'])+card(['2023 & 2024','2023 و2024'],['Table tennis & chess teams','منتخب تنس الطاولة والشطرنج'],['6th nationally · honoured by the Emir of Al Baha','السادس على المملكة · تكريم أمير منطقة الباحة']);
+const tc=[...document.querySelectorAll('.tcard')];
+tc.forEach(c=>{c.addEventListener('click',()=>{tc.forEach(x=>x.classList.toggle('front',x===c))});
+ c.addEventListener('dblclick',()=>{const f=car.children[+c.dataset.i];document.getElementById('awards').scrollIntoView({behavior:'smooth'});setTimeout(()=>{f.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});f.classList.remove('hl');void f.offsetWidth;f.classList.add('hl')},600)})});
+const lb=document.getElementById('lang');
+const setL=l=>{const r=document.documentElement;r.lang=l;r.dir=l==='ar'?'rtl':'ltr';lb.textContent=l==='ar'?'English':'العربية';try{localStorage.setItem('rl',l)}catch(_){};car.scrollLeft=0;upd()};
+lb.addEventListener('click',()=>setL(document.documentElement.lang==='ar'?'en':'ar'));
+let saved=null;try{saved=localStorage.getItem('rl')}catch(_){}
+if(location.hash==='#ar')saved='ar';if(saved==='ar')setL('ar');
+document.getElementById('copy').addEventListener('click',async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText('rekhalid68@gmail.com');b.innerHTML=T('Copied ✓','تم النسخ ✓')}catch(_){b.innerHTML=T('Select the email above','انسخ الإيميل من فوق')}});
+let dlns=null;
+if(window.claude&&typeof window.claude.use==='function'){window.claude.use('downloads').then(d=>{dlns=d}).catch(()=>{})}
+document.querySelectorAll('a[href="Renad_Alhomrany_CV.pdf"]').forEach(a=>a.addEventListener('click',async e=>{
+ if(!dlns)return; e.preventDefault();
+ try{const r=await fetch('Renad_Alhomrany_CV.pdf');const bl=await r.blob();await dlns.save({filename:'Renad_Alhomrany_CV.pdf',data:bl})}catch(err){}
+}));
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;en.target.classList.add('in');en.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');io.unobserve(en.target)}),{threshold:.2});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('[data-n]').forEach(el=>{const n=+el.dataset.n,s=el.dataset.s||'';let i=0;const tick=()=>{i++;el.textContent=Math.min(i,n)+(i>=n?s:'');if(i<n)setTimeout(tick,80)};setTimeout(tick,400)});
+}
+</script>
+</body>
+</html>
